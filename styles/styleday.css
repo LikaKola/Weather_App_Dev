@@ -33,6 +33,14 @@ p {
   font-size: inherit;
 }
 
+.openlink {
+  color:white
+}
+.openlink:hover {
+  color:white;
+  opacity: 0.75;
+}
+
 .showlocaltime {
   font-size: 34px;
   line-height: 48px;
