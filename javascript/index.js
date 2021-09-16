@@ -62,6 +62,9 @@ function formatDate(now) {
 }
 
 nowlocaltime.innerHTML = formatDate(now);
+let dateWithouthSecond = new Date();
+dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+
 //alert(formatDate(now));
 
 //searchbar
