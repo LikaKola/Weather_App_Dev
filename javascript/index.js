@@ -23,13 +23,11 @@ dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minu
 
 function displayForecast() {
 let forecastElement = document.querySelector ("#forecast");
-
 let forecastHTML = `<div class="row">`;
-let days = ["Thur", "Fri", "Sat", "Sunday", "Mon"]; 
+let days = ["Thu", "Fri", "Sat", "Sun", "Mon"]; 
 days.forEach(function(day) {
   forecastHTML =  forecastHTML + 
-  ` 
-  <div class="col-2">
+  `   <div class="col-2">
     <img src="http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
      <div class="card-body">
       <h5 class="card-title">${day}</h5>
@@ -49,14 +47,17 @@ days.forEach(function(day) {
 forecastElement.innerHTML = forecastHTML; 
 ;
 }
-//alert(formatDate(now));
-
 //searchbar
 
-
+function getForecast (coordinates){ 
+//console.log(coordinates);
+let apiKey= "d8f52daba653e4c8756beaa32c6a539e";
+let apiURL=`"https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+//console.log (apiURL);
+//axios.get (apiURL).then(displayForecast);
+}
 
 function showTemperature (response) {
-  console.log (response);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature} °C`;
@@ -70,8 +71,8 @@ function showTemperature (response) {
   let wind = document.querySelector ("#wind");
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
 
-
-displayForecast();
+//console.log(response.data)
+getForecast(response.data.coord);
 }
 
 function find(event) {
@@ -81,7 +82,6 @@ function find(event) {
   let units = "metric";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   h2.innerHTML = `in  ${city}`;
-  
   let apiUrl = `${apiEndpoint}?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get (`${apiUrl}`).then(showTemperature);
 
@@ -112,5 +112,7 @@ buttonGeoLocation.addEventListener("click", getCurrentPosition);
 //let city = document.querySelector("#city-search");
 let h2 = document.querySelector("h2");
 
+
+displayForecast();
 
 
