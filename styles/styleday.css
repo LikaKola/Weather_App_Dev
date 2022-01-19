@@ -42,8 +42,8 @@ p {
 }
 
 .showlocaltime {
-  font-size: 34px;
-  line-height: 48px;
+  font-size: 20px;
+  line-height: 20px;
 }
 .tip {
   margin: 10px auto;
@@ -103,7 +103,7 @@ p {
 
 .card {
   position: relative;
-  display: flex;
+  display: flexbox;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;

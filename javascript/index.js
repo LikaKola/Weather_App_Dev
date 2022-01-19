@@ -1,31 +1,3 @@
-let weather = {
-  paris: {
-    temp: 19.7,
-    humidity: 80,
-  },
-  tokyo: {
-    temp: 17.3,
-    humidity: 50,
-  },
-  lisbon: {
-    temp: 30.2,
-    humidity: 20,
-  },
-  "san francisco": {
-    temp: 20.9,
-    humidity: 100,
-  },
-  moscow: {
-    temp: -5,
-    humidity: 40,
-  },
-  barcelona: {
-    temp: 28,
-    humidity: 50,
-  },
-};
-
-
 let now = new Date();
 function formatDate(now) {
   let days = [
@@ -38,23 +10,7 @@ function formatDate(now) {
     "Saturday",
   ];
 
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  //let nowYear = now.getFullYear();
   let nowDay = days[now.getDay()];
-  let nowMonth = months[now.getMonth()];
   let nowHours = now.getHours();
   let nowMinutes = now.getMinutes();
   let formatDate = `${nowDay}, ${nowHours}:${nowMinutes}`;
@@ -75,6 +31,17 @@ function showTemperature (response) {
   let temperatureElement = document.querySelector("h1");
   temperatureElement.innerHTML = `${temperature} °C`;
   h2.innerHTML = `in ${response.data.name}`;
+  let iconElement = document.querySelector ("#icon1");
+  iconElement.setAttribute ("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  let currentStatus = document.querySelector ("#status");
+  currentStatus.innerHTML = `${response.data.weather[0].description}`;
+  let humid = document.querySelector ("#humidity");
+  humid.innerHTML = `Humidity: ${response.data.main.humidity} %`;
+  let wind = document.querySelector ("#wind");
+  wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
+
+
+
 }
 
 function find(event) {
@@ -90,11 +57,8 @@ function find(event) {
 
 }
 
-
 let citySearch = document.querySelector("#city-form");
 citySearch.addEventListener("submit", find);
-
-
 
 
 function showLocation (position) {
