@@ -21,9 +21,39 @@ nowlocaltime.innerHTML = formatDate(now);
 let dateWithouthSecond = new Date();
 dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
+function displayForecast() {
+let forecastElement = document.querySelector ("#forecast");
+
+let forecastHTML = `<div class="row">`;
+let days = ["Thur", "Fri", "Sat", "Sunday", "Mon"]; 
+days.forEach(function(day) {
+  forecastHTML =  forecastHTML + 
+  ` 
+  <div class="col-2">
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
+     <div class="card-body">
+      <h5 class="card-title">${day}</h5>
+      <p class="card-text">
+        day: 22° <br />
+        night: 18°
+      </p>
+     </div>
+     <div class="card-footer">
+       <small class="text-muted">Warm</small>
+     </div>
+  </div>
+  
+  `;
+});
+
+forecastElement.innerHTML = forecastHTML; 
+;
+}
 //alert(formatDate(now));
 
 //searchbar
+
+
 
 function showTemperature (response) {
   console.log (response);
@@ -41,7 +71,7 @@ function showTemperature (response) {
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
 
 
-
+displayForecast();
 }
 
 function find(event) {
