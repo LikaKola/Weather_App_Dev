@@ -25,20 +25,29 @@ dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minu
 
 //Second screen displaying 4 day forecast 
 
+
+function formatDay(timestamp){
+
+  let date = new Date(timestamp*1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; 
+  return days [day];
+}
+
+
 function displayForecast(response) {
-console.log (response.data.daily);
+let forecast = response.data.daily;
 let forecastElement = document.querySelector ("#forecast");
-let days = ["Thu", "Fri", "Sat", "Sun", "Mon"]; 
 let forecastHTML = `<div class="row">`;
-  days.forEach(function(day) {
-    forecastHTML =  forecastHTML + 
+  forecast.forEach(function(forecastDay) {
+    forecastHTML +=  // forecastHTML + 
     `   <div class="col-2">
-      <img src="https://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
+      <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
      <div class="card-body">
-      <h5 class="card-title">${day}</h5>
+      <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
       <p class="card-text">
-        day: 22° <br />
-        night: 18°
+       <span class = "weather-forecast-max"> ${forecastDay.temp.max} °</span>
+       <span class = "weather-forecast-max"> ${forecastDay.temp.min} ° </span>
       </p>
      </div>
      <div class="card-footer">
@@ -48,6 +57,7 @@ let forecastHTML = `<div class="row">`;
     `;
   });
 
+forecastHTML= forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML; 
 
 }
