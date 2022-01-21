@@ -29,7 +29,7 @@ let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
 days.forEach(function(day) {
   forecastHTML =  forecastHTML + 
   `   <div class="col-2">
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
+    <img src="https://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
      <div class="card-body">
       <h5 class="card-title">${day}</h5>
       <p class="card-text">
