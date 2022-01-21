@@ -53,8 +53,8 @@ forecastElement.innerHTML = forecastHTML;
 function getForecast (coordinates){ 
 //console.log(coordinates);
 let apiKey= "d8f52daba653e4c8756beaa32c6a539e";
-let apiUrl=`pro.openweathermap.org/data/2.5/forecast/hourly?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-//console.log (apiUrl);
+let apiUrl=`api.openweathermap.org/data/2.5/forecast/hourly?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+console.log (apiUrl);
 axios.get (apiUrl).then(displayForecast);
 }
 
