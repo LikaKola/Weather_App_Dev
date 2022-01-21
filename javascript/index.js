@@ -64,7 +64,7 @@ function showTemperature (response) {
   temperatureElement.innerHTML = `${temperature} °C`;
   h2.innerHTML = `in ${response.data.name}`;
   let iconElement = document.querySelector ("#icon1");
-  iconElement.setAttribute ("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute ("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   let currentStatus = document.querySelector ("#status");
   currentStatus.innerHTML = `${response.data.weather[0].description}`;
   let humid = document.querySelector ("#humidity");
