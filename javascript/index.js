@@ -21,15 +21,19 @@ nowlocaltime.innerHTML = formatDate(now);
 let dateWithouthSecond = new Date();
 dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
+
+
+//Second screen displaying 4 day forecast 
+
 function displayForecast(response) {
-  //console.log (response.data.daily);
+console.log (response.data.daily);
 let forecastElement = document.querySelector ("#forecast");
-let forecastHTML = `<div class="row">`;
 let days = ["Thu", "Fri", "Sat", "Sun", "Mon"]; 
-days.forEach(function(day) {
-  forecastHTML =  forecastHTML + 
-  `   <div class="col-2">
-    <img src="https://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
+let forecastHTML = `<div class="row">`;
+  days.forEach(function(day) {
+    forecastHTML =  forecastHTML + 
+    `   <div class="col-2">
+      <img src="https://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="icon1" id="weather-icon" />
      <div class="card-body">
       <h5 class="card-title">${day}</h5>
       <p class="card-text">
@@ -40,23 +44,24 @@ days.forEach(function(day) {
      <div class="card-footer">
        <small class="text-muted">Warm</small>
      </div>
-  </div>
-  
-  `;
-});
+   </div>
+    `;
+  });
 
 forecastElement.innerHTML = forecastHTML; 
-;
+
 }
-//searchbar
 
 function getForecast (coordinates){ 
-//console.log(coordinates);
+console.log(coordinates);
 let apiKey= "d8f52daba653e4c8756beaa32c6a539e";
-let apiUrl=`api.openweathermap.org/data/2.5/forecast/hourly?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
-console.log (apiUrl);
+let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+//api.openweathermap.org/data/2.5/forecast/hourly?lat=
+//console.log (apiUrl);
 axios.get (apiUrl).then(displayForecast);
 }
+
+//Top  screen with current city and current weather
 
 function showTemperature (response) {
   let temperature = Math.round(response.data.main.temp);
