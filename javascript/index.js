@@ -9,7 +9,6 @@ function formatDate(now) {
     "Friday",
     "Saturday",
   ];
-
   let nowDay = days[now.getDay()];
   let nowHours = now.getHours();
   if (nowHours < 10) {
@@ -19,16 +18,14 @@ function formatDate(now) {
   if (nowMinutes < 10) {
     nowMinutes = `0${nowMinutes}`;
   }
-  let formatDate = `${nowDay}, ${nowHours}:${nowMinutes}`;
-  return formatDate;
+
+let formatDate = `${nowDay}, ${nowHours}:${nowMinutes}`;
+return formatDate;
 }
 
 nowlocaltime.innerHTML = formatDate(now);
-//let dateWithouthSecond = new Date();
-//dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
 //Second screen displaying 4 day forecast 
-
 
 function formatDay(timestamp){
   let date = new Date(timestamp*1000);
