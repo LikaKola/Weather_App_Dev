@@ -44,7 +44,7 @@ let forecastHTML = `<div class="row">`;
       <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
       <p class="card-text">
        <span class = "weather-forecast-max"> ${Math.round(forecastDay.temp.max)} °</span> </br>
-       <span class = "weather-forecast-max"> ${Math.round(forecastDay.temp.min)} ° </span>
+       <span class = "weather-forecast-min"> ${Math.round(forecastDay.temp.min)} ° </span>
       </p>
      </div>
    </div>
