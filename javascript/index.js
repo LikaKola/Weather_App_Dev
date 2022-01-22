@@ -21,13 +21,10 @@ nowlocaltime.innerHTML = formatDate(now);
 let dateWithouthSecond = new Date();
 dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
-
-
 //Second screen displaying 4 day forecast 
 
 
 function formatDay(timestamp){
-
   let date = new Date(timestamp*1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; 
@@ -120,13 +117,16 @@ function getCurrentPosition (){
  navigator.geolocation.getCurrentPosition(showLocation);
 }
 
+window.onload = function() {
+ // alert (`Ok!`)
+ getCurrentPosition();
+};
+
+
 let buttonGeoLocation = document.querySelector("#my-location");
 buttonGeoLocation.addEventListener("click", getCurrentPosition);
-
 //let city = document.querySelector("#city-search");
 let h2 = document.querySelector("h2");
 
-
-//displayForecast();
 
 
