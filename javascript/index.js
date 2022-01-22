@@ -12,14 +12,20 @@ function formatDate(now) {
 
   let nowDay = days[now.getDay()];
   let nowHours = now.getHours();
+  if (nowHours < 10) {
+    nowHours = `0${nowHours}`;
+  }
   let nowMinutes = now.getMinutes();
+  if (nowMinutes < 10) {
+    nowMinutes = `0${nowMinutes}`;
+  }
   let formatDate = `${nowDay}, ${nowHours}:${nowMinutes}`;
   return formatDate;
 }
 
 nowlocaltime.innerHTML = formatDate(now);
-let dateWithouthSecond = new Date();
-dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+//let dateWithouthSecond = new Date();
+//dateWithouthSecond.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
 //Second screen displaying 4 day forecast 
 
