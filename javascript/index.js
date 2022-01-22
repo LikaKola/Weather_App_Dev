@@ -58,11 +58,8 @@ forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast (coordinates){ 
-console.log(coordinates);
 let apiKey= "d8f52daba653e4c8756beaa32c6a539e";
 let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-//api.openweathermap.org/data/2.5/forecast/hourly?lat=
-//console.log (apiUrl);
 axios.get (apiUrl).then(displayForecast);
 }
 
@@ -82,7 +79,6 @@ function showTemperature (response) {
   let wind = document.querySelector ("#wind");
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
 
-//console.log(response.data)
 getForecast(response.data.coord);
 }
 
@@ -97,13 +93,11 @@ function find(event) {
   axios.get (`${apiUrl}`).then(showTemperature);
 
 }
-
 let citySearch = document.querySelector("#city-form");
 citySearch.addEventListener("submit", find);
 
 
 function showLocation (position) {
-//alert (`I know where you are! Coordinates: ${position.coords.latitude} and ${position.coords.longitude}`);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey= "d8f52daba653e4c8756beaa32c6a539e";
@@ -117,14 +111,11 @@ function getCurrentPosition (){
  navigator.geolocation.getCurrentPosition(showLocation);
 }
 
-
 let buttonGeoLocation = document.querySelector("#my-location");
 buttonGeoLocation.addEventListener("click", getCurrentPosition);
-//let city = document.querySelector("#city-search");
 let h2 = document.querySelector("h2");
 
 window.onload = function() {
-  // alert (`Ok!`)
   getCurrentPosition();
  };
 
