@@ -117,16 +117,14 @@ function getCurrentPosition (){
  navigator.geolocation.getCurrentPosition(showLocation);
 }
 
-window.onload = function() {
- // alert (`Ok!`)
- getCurrentPosition();
-};
-
 
 let buttonGeoLocation = document.querySelector("#my-location");
 buttonGeoLocation.addEventListener("click", getCurrentPosition);
 //let city = document.querySelector("#city-search");
 let h2 = document.querySelector("h2");
 
-
+window.onload = function() {
+  // alert (`Ok!`)
+  getCurrentPosition();
+ };
 
