@@ -78,7 +78,6 @@ function showTemperature (response) {
   humid.innerHTML = `Humidity: ${response.data.main.humidity} %`;
   let wind = document.querySelector ("#wind");
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
-
 getForecast(response.data.coord);
 }
 
